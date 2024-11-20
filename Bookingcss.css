@@ -1,0 +1,149 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #e60000;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+#search-vehicle, #vehicle-select {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  margin: 15px 0;
+  display: block;
+  border: 2px solid #e60000;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#search-vehicle:focus, #vehicle-select:focus {
+  border-color: #b30000;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.date-time-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+}
+
+.field-group label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #e60000;
+}
+
+input[type="text"] {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #e60000;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+  border-color: #b30000;
+  box-shadow: 0 0 8px rgba(230, 0, 0, 0.5);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  margin: 20px 0;
+  background-color: #e60000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #b30000;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #990000;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background-color: #fff;
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h3 {
+  color: #28a745;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #218838;
+}

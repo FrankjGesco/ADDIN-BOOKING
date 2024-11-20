@@ -1,0 +1,16 @@
+{
+	"name": "LISTA CLIENTI",
+	"supportEmail": "francesco.forlasi@vodafone.com",
+	"version": "1.0",
+	"items": [
+		{
+			"url": "https://cdn.jsdelivr.net/gh/FrankjGesco/LISTA_CLIENTI@main/Listato_clienti.html",
+			"path": "/",
+			"menuName": {
+				"en": " Lista Clienti "
+			},
+			"icon": "https://cdn.jsdelivr.net/gh/FrankjGesco/LISTA_CLIENTI@main/connectivity-system.svg"
+		}
+	],
+	"isSigned": false
+}
