@@ -1,15 +1,15 @@
 {
-	"name": "LISTA CLIENTI",
-	"supportEmail": "francesco.forlasi@vodafone.com",
+	"name": "Vehicle Booking Tool",
+	"supportEmail": "support@yourcompany.com",
 	"version": "1.0",
 	"items": [
 		{
-			"url": "https://cdn.jsdelivr.net/gh/FrankjGesco/LISTA_CLIENTI@main/Listato_clienti.html",
+			"url": "https://cdn.jsdelivr.net/gh/FrankjGesco/ADDIN-BOOKING@main/Bookinghtml.html",
 			"path": "/",
 			"menuName": {
-				"en": " Lista Clienti "
+				"en": "Vehicle Booking"
 			},
-			"icon": "https://cdn.jsdelivr.net/gh/FrankjGesco/LISTA_CLIENTI@main/connectivity-system.svg"
+			"icon": "https://cdn.jsdelivr.net/gh/tuo-username/nome-repository@main/connectivity-system.svg"
 		}
 	],
 	"isSigned": false

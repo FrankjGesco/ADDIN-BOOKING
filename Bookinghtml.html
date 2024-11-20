@@ -4,59 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Booking - Login</title>
+    <title>Vehicle Booking</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="Bookingcss.css">
-    <script src="js/api.js"></script>
-    <script src="js/login.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div id="login-container">
-        <h1>Welcome to Vehicle Booking</h1>
-        <p>Authenticating, please wait...</p>
-    </div>
+    <h1>Vehicle Booking</h1>
+    <h2>Search and Select Vehicle</h2>
+    <input type="text" id="search-vehicle" placeholder="Type to search license plates" />
+    <select id="vehicle-select">
+        <option value="" disabled selected>Select a vehicle</option>
+    </select>
 
-    <div id="main-content" class="hidden">
-        <h1>Vehicle Booking</h1>
-        <h2>Search and Select Vehicle</h2>
-        <input type="text" id="search-vehicle" placeholder="Type to search license plates" />
-        <select id="vehicle-select">
-            <option value="" disabled selected>Select a vehicle</option>
-        </select>
-
-        <div class="date-time-container">
-            <div class="field-group">
-                <label for="start-date">Start Date:</label>
-                <input type="text" id="start-date" placeholder="Select start date" readonly>
-            </div>
-            <div class="field-group">
-                <label for="start-time">Start Time:</label>
-                <input type="text" id="start-time" placeholder="Select start time" readonly>
-            </div>
-            <div class="field-group">
-                <label for="end-date">End Date:</label>
-                <input type="text" id="end-date" placeholder="Select end date" readonly>
-            </div>
-            <div class="field-group">
-                <label for="end-time">End Time:</label>
-                <input type="text" id="end-time" placeholder="Select end time" readonly>
-            </div>
+    <div class="date-time-container">
+        <div class="field-group">
+            <label for="start-date">Start Date:</label>
+            <input type="text" id="start-date" placeholder="Select start date" readonly>
         </div>
-        <button id="book-vehicle">Book Vehicle</button>
-
-        <div id="popup-container" class="popup hidden">
-            <div class="popup-content">
-                <h3>Booking Confirmed!</h3>
-                <div id="popup-result"></div>
-                <button id="close-popup" class="close-btn">Close</button>
-            </div>
+        <div class="field-group">
+            <label for="start-time">Start Time:</label>
+            <input type="text" id="start-time" placeholder="Select start time" readonly>
+        </div>
+        <div class="field-group">
+            <label for="end-date">End Date:</label>
+            <input type="text" id="end-date" placeholder="Select end date" readonly>
+        </div>
+        <div class="field-group">
+            <label for="end-time">End Time:</label>
+            <input type="text" id="end-time" placeholder="Select end time" readonly>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <button id="book-vehicle">Book Vehicle</button>
+
+    <div id="popup-container" class="popup hidden">
+        <div class="popup-content">
+            <div class="success-animation">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#e6ffe6" />
+                    <path d="M9 12l2 2 4-4" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round" />
+                </svg>
+            </div>
+            <h3>Booking Confirmed!</h3>
+            <div id="popup-result"></div>
+            <button id="close-popup" class="close-btn">Close</button>
+        </div>
+    </div>
 </body>
 
 </html>

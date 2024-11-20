@@ -1,29 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("Initializing SSO login...");
-
-    function initializeSSO() {
-        geotab.addin.sso = function (api, state, addInDone) {
-            geotab.login({
-                database: state.database,
-                userName: state.userName,
-                sessionId: state.sessionId
-            }, function (success) {
-                if (success) {
-                    console.log("Login successful!");
-                    document.getElementById("login-container").classList.add("hidden");
-                    document.getElementById("main-content").classList.remove("hidden");
-                    loadVehicles(api); // Carica i veicoli dopo il login
-                    addInDone();
-                } else {
-                    console.error("Login failed. Please try again.");
-                    document.getElementById("login-container").innerHTML = `
-                        <h1>Login Failed</h1>
-                        <p>Please refresh the page and try again.</p>
-                    `;
-                }
-            });
-        };
-    }
+    console.log("Document loaded, initializing script...");
 
     function initializeFlatpickr() {
         try {
@@ -34,12 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 defaultDate: "today",
                 minDate: "today",
             });
+            console.log("Flatpickr initialized for #start-date");
+
             flatpickr("#start-time", {
                 enableTime: true,
                 noCalendar: true,
                 dateFormat: "H:i",
                 time_24hr: true,
             });
+            console.log("Flatpickr initialized for #start-time");
+
             flatpickr("#end-date", {
                 altInput: true,
                 altFormat: "F j, Y",
@@ -47,31 +27,51 @@ document.addEventListener('DOMContentLoaded', function () {
                 defaultDate: "today",
                 minDate: "today",
             });
+            console.log("Flatpickr initialized for #end-date");
+
             flatpickr("#end-time", {
                 enableTime: true,
                 noCalendar: true,
                 dateFormat: "H:i",
                 time_24hr: true,
             });
+            console.log("Flatpickr initialized for #end-time");
         } catch (error) {
             console.error("Error initializing Flatpickr:", error);
         }
     }
 
-    function loadVehicles(api) {
-        api.call("Get", {
-            typeName: "Device"
-        }, function (devices) {
-            const vehicleSelect = $("#vehicle-select");
-            vehicleSelect.empty();
-            vehicleSelect.append('<option value="" disabled selected>Select a vehicle</option>');
-            devices.forEach(device => {
-                if (device.licensePlate) {
-                    vehicleSelect.append(`<option value="${device.id}">${device.licensePlate}</option>`);
-                }
-            });
-        }, function (error) {
-            console.error("Error fetching vehicles:", error);
+    function loadVehicles() {
+        const sessionId = "wGpX02zwHHrMMmba4gk-PA";
+        const apiUrl = "https://my.fleet.vodafoneautomotive.com/apiv1";
+
+        $.ajax({
+            url: apiUrl,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                method: "Get",
+                params: {
+                    typeName: "Device",
+                    credentials: {
+                        database: "vf_experimentation",
+                        userName: "francesco.forlasi@vodafone.com",
+                        sessionId: sessionId
+                    }
+                },
+                id: 1
+            }),
+            success: function (response) {
+                const devices = response.result;
+                const vehicleSelect = $("#vehicle-select");
+                vehicleSelect.empty();
+                vehicleSelect.append('<option value="" disabled selected>Select a vehicle</option>');
+                devices.forEach(device => {
+                    if (device.licensePlate) {
+                        vehicleSelect.append(`<option value="${device.id}">${device.licensePlate}</option>`);
+                    }
+                });
+            }
         });
     }
 
@@ -115,9 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
         $("#popup-result").empty();
     }
 
-    initializeSSO();
     initializeFlatpickr();
-
+    loadVehicles();
     $("#search-vehicle").on("input", filterVehicles);
     $("#book-vehicle").on("click", bookVehicle);
     $("#close-popup").on("click", closePopup);
